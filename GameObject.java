@@ -4,12 +4,22 @@ public abstract class GameObject {
 
     protected int x, y;
     protected float velX = 0, velY = 0;
+    protected objectID id;
 
-    public GameObject(int x, int y){
+    public GameObject(int x, int y, objectID id){
         this.x = x;
         this.y = y;
+        this.id = id;
     }
 
+    public objectID getId(){
+        return id;
+    }
+    
+    public void setId(objectID id){
+        this.id = id;
+    }
+    
     public abstract void tick();
     public abstract void render(Graphics g);
     public abstract Rectangle getBounds();
