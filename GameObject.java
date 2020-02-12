@@ -5,11 +5,31 @@ public abstract class GameObject {
     protected int x, y;
     protected float velX = 0, velY = 0;
     protected objectID id;
+    protected int hp;
+    protected int damage;
 
-    public GameObject(int x, int y, objectID id){
+    public GameObject(int x, int y, int hp, int damage, objectID id){
         this.x = x;
         this.y = y;
+        this.hp = hp;
+        this.damage = damage;
         this.id = id;
+    }
+    
+    public int getDamage(){
+        return damage;
+    }
+    
+    public void setDamage(int damage){
+        this.damage = damage;
+    }
+    
+    public int getHP(){
+        return hp;
+    }
+    
+    public void setHP(int hp){
+        this.hp = hp;
     }
 
     public objectID getId(){
