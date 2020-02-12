@@ -4,8 +4,8 @@ public class Guard extends GameObject{
 
     Handler handler;
 
-    public Guard(int x, int y, objectID id) {
-        super(x, y, id);
+    public Guard(int x, int y, int hp, int damage, objectID id) {
+        super(x, y, hp, damage, id);
         this.handler = handler;
     }
 
