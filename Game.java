@@ -14,7 +14,7 @@ public class Game extends Canvas implements Runnable{
 
 
     public Game(){
-        new Window(2300, 1200, "PacDad", this);
+        new Window(1000, 563, "PacDad", this);
         start();
 
         handler = new Handler();
@@ -87,7 +87,7 @@ public class Game extends Canvas implements Runnable{
         /////////////////////////////////////
 
         g.setColor(Color.black);
-        g.fillRect(0, 0, 2300, 1200);
+        g.fillRect(0, 0, 1000, 563);
 
         handler.render(g);
 
@@ -114,7 +114,7 @@ public class Game extends Canvas implements Runnable{
     			}
     			
     			if(blue == 160) {
-    				handler.addObject(new Player(xx * 10, yy * 10, 100, 100, objectID.Guard, handler));
+    				handler.addObject(new Player(xx * 10, yy * 10, 100, 100, objectID.Player, handler));
     			}
     		}
     	}
