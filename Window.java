@@ -1,5 +1,3 @@
-import javafx.beans.WeakInvalidationListener;
-
 import javax.swing.*;
 import java.awt.*;
 
