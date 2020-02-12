@@ -10,7 +10,7 @@ public class Handler {
 
     //Player movement boolean values
     private boolean up = false, down = false, right = false, left = false;
-
+    
     public boolean isUp() {
         return up;
     }
