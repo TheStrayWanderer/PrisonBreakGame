@@ -14,6 +14,7 @@ public class Guard extends GameObject{
         y += velY;  //Updates the y value per second
 
         //Guard Movement
+        
         if(handler.isUp()) velY = -3;
         else if(!handler.isDown()) velY = 0;
 
@@ -25,7 +26,7 @@ public class Guard extends GameObject{
 
         if(handler.isLeft()) velX = -3;
         else if(!handler.isRight()) velX = 0;
-
+        
     }
 
     public void render(Graphics g) {
