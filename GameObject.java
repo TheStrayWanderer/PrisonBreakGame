@@ -1,4 +1,5 @@
 import java.awt.*;
+import java.awt.*;
 
 public abstract class GameObject {
 
@@ -8,26 +9,24 @@ public abstract class GameObject {
     protected int hp;
     protected int damage;
 
-    public GameObject(int x, int y, int hp, int damage, objectID id){
+    public GameObject(int x, int y, objectID id){
         this.x = x;
         this.y = y;
-        this.hp = hp;
-        this.damage = damage;
         this.id = id;
     }
-    
+
     public int getDamage(){
         return damage;
     }
-    
+
     public void setDamage(int damage){
         this.damage = damage;
     }
-    
+
     public int getHP(){
         return hp;
     }
-    
+
     public void setHP(int hp){
         this.hp = hp;
     }
@@ -35,11 +34,11 @@ public abstract class GameObject {
     public objectID getId(){
         return id;
     }
-    
+
     public void setId(objectID id){
         this.id = id;
     }
-    
+
     public abstract void tick();
     public abstract void render(Graphics g);
     public abstract Rectangle getBounds();
