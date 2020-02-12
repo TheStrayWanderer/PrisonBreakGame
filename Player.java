@@ -2,11 +2,11 @@ import java.awt.*;
 
 public class Player extends GameObject{
 
-
+    
     Handler handler;
-
-    public Player(int x, int y, objectID id, Handler handler) {
-        super(x, y, id);
+    
+    public Player(int x, int y, int hp, int damage, objectID id, Handler handler) {
+        super(x, y, hp, damage, id);
         this.handler = handler;
     }
 
