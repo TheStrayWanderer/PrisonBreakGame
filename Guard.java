@@ -4,8 +4,9 @@ public class Guard extends GameObject{
 
     Handler handler;
 
-    public Guard(int x, int y, int hp, int damage, objectID id) {
-        super(x, y, hp, damage, id);
+
+    public Guard(int x, int y, int hp, int damage, objectID id, Handler handler) {
+        super(x, y, id);
         this.handler = handler;
     }
 
@@ -15,25 +16,14 @@ public class Guard extends GameObject{
 
         //Guard Movement
         
-        if(handler.isUp()) velY = -3;
-        else if(!handler.isDown()) velY = 0;
-
-        if(handler.isDown()) velY = 3;
-        else if(!handler.isUp()) velY = 0;
-
-        if(handler.isRight()) velX = 3;
-        else if(!handler.isLeft()) velX = 0;
-
-        if(handler.isLeft()) velX = -3;
-        else if(!handler.isRight()) velX = 0;
-        
     }
 
     public void render(Graphics g) {
-
+        g.setColor(Color.blue);
+        g.fillRect(x, y, 10, 10);
     }
 
     public Rectangle getBounds() {
-        return null;
+        return new Rectangle(x, y, 10, 10);
     }
 }
