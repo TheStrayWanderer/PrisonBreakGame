@@ -1,5 +1,7 @@
+package prisonbreakgame;
 import java.awt.*;
 import java.awt.image.BufferStrategy;
+import java.awt.image.BufferedImage;
 
 public class Game extends Canvas implements Runnable{
 
@@ -9,14 +11,22 @@ public class Game extends Canvas implements Runnable{
     private Thread thread;
     private Handler handler;
 
+    private BufferedImage level_1;
+
 
     public Game(){
-        new Window(1930, 1060, "PacDad", this);
+        new Window(2300, 1200, "PacDad", this);
         start();
 
         handler = new Handler();
         this.addKeyListener(new PlayerKeyInput(handler));
-        handler.addObject(new Player(100, 100, 100, 100, objectID.Player, handler));
+
+        BufferedImageLoader loader = new BufferedImageLoader();
+        level_1 = loader.loadImage("/level1.png");
+
+        loadLevel1(level_1);
+        
+
     }
 
     private void start(){
@@ -78,7 +88,7 @@ public class Game extends Canvas implements Runnable{
         /////////////////////////////////////
 
         g.setColor(Color.black);
-        g.fillRect(0, 0, 1930, 1060);
+        g.fillRect(0, 0, 2300, 1200);
 
         handler.render(g);
 
@@ -86,6 +96,29 @@ public class Game extends Canvas implements Runnable{
         g.dispose();
         bs.show();
 
+    }
+    
+    //Loading Level 1
+    private void loadLevel1(BufferedImage image) {
+    	int w = image.getWidth();
+    	int h = image.getHeight();
+    	
+    	for(int xx = 0; xx < w; xx++) {
+    		for(int yy = 0; yy < h; yy++) {
+    			int pixel = image.getRGB(xx, yy);
+    			int red = (pixel >> 16) & 0xff;
+    			int green = (pixel >> 8) & 0xff;
+    			int blue = (pixel) & 0xff;
+    			
+    			if(red == 237) {
+    				handler.addObject(new Block(xx * 32, yy * 32, objectID.Block));
+    			}
+    			
+    			if(blue == 160) {
+    				handler.addObject(new Player(xx * 10, yy * 10, 100, 100, objectID.Guard, handler));
+    			}
+    		}
+    	}
     }
 
     public static void main(String args[]){
