@@ -1,5 +1,3 @@
-package prisonbreakgame;
-
 public class Camera {
 	
 	private float x, y;
@@ -14,6 +12,11 @@ public class Camera {
 		
 		x += ((object.getX() - x) - 1000/2) * 0.05f;
 		y += ((object.getY() - y) - 1000/2) * 0.05f;
+		
+		if(x <= 0) x = 0;
+		if(x >= 1060) x = 1060;
+		if(y <= 0) y = 0;
+		if(y >= 190) y = 190;
 		
 	}
 
@@ -36,3 +39,4 @@ public class Camera {
 	
 
 }
+
