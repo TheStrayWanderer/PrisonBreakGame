@@ -10,8 +10,19 @@ public class Handler {
 
     //Player movement boolean values
     private boolean up = false, down = false, right = false, left = false;
+    
+    //Other general key bindings
+    private boolean pickUp = false;
 
-    public boolean isUp() {
+    public boolean isPickUp() {
+		return pickUp;
+	}
+
+	public void setPickUp(boolean pickUp) {
+		this.pickUp = pickUp;
+	}
+
+	public boolean isUp() {
         return up;
     }
 
