@@ -8,14 +8,12 @@ public class Main extends JFrame {
     public Main() {
         JPanel panel = new JPanel();
 
-        setTitle("Tutorial");
+        setTitle("PacDad");
         setSize(640, 480);
-        setResizable(false);
-
-        panel.setBackground(java.awt.Color.DARK_GRAY);
-        CustomButton button = new CustomButton("Customized");
-        panel.add(button);
-        add(panel);
+        setResizable(true);
+        
+        Menu menu = new Menu();
+        add(menu);
 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
@@ -23,9 +21,7 @@ public class Main extends JFrame {
 
     }
 
-    //Menu menu = new Menu();
-
-    //add(menu);
+    
     public static void main(String[] args) {
         new Main();
 
