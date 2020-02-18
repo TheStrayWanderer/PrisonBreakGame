@@ -1,0 +1,64 @@
+package menu;
+
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import javax.swing.AbstractAction;
+import java.net.URL;
+import javax.swing.JPanel;
+import javax.swing.ImageIcon;
+import javax.swing.BoxLayout;
+import javax.swing.Box;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.AudioInputStream;
+
+public class Menu extends JPanel {
+
+    boolean started = false;
+
+    public Menu() {
+        setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+
+        add(Box.createVerticalStrut(280));
+
+        CustomButton button = new CustomButton("Start");
+        button.setAlignmentX(CENTER_ALIGNMENT);
+        button.addActionListener(new AbstractAction(){
+        @Override
+        public void actionPerformed(ActionEvent e){
+            start();
+        }
+        });
+        
+        add(button);
+
+        add(Box.createHorizontalGlue());
+
+        //BoxLayout is simply a layout where u have boxes and it basically adding invisable components 
+        //to push the button down so its not always floating in its default position
+        try {
+            URL url = Menu.class.getResource("music.wav");
+            AudioInputStream audio = AudioSystem.getAudioInputStream(url);
+            Clip music = AudioSystem.getClip();
+            music.loop(-1);
+
+        } catch (Exception ex) {
+        }
+    }
+
+    public void start() {
+        
+        started = true;
+    }
+
+    @Override
+    public void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        if (!started) {
+            g.drawImage(new ImageIcon(Menu.class.getResource("background.jpg")).getImage(), 0, 0, 640, 480, this);
+        } else {
+            setBackground(Color.BLUE);
+        }
+    }
+
+}
