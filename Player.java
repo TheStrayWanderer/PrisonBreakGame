@@ -72,6 +72,10 @@ public class Player extends GameObject {
     				game.hasGun = true;
     				handler.removeObject(tempObject);
     			}
+    		}else if(tempObject.getId() == objectID.Guard) {
+    			if(getBounds().intersects(tempObject.getBounds())) {
+    				game.hp--;
+    			}
     		}
     		}
     	}
