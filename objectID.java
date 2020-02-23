@@ -8,6 +8,7 @@ public enum objectID {
     Player(),
     Guard(),
     Block(),
+    Bullet(),
     Stairs(),
     Door(),
     Gun(),
