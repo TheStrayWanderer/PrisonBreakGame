@@ -1,19 +1,33 @@
 import java.awt.*;
+import java.awt.image.BufferedImage;
 
-public class Player extends GameObject{
+public class Player extends GameObject {
 
 
     Handler handler;
+    Game game;
+    private BufferedImage[] player_image = new BufferedImage[3];
 
-    public Player(int x, int y, int hp, int damage, objectID id, Handler handler) {
-        super(x, y, id);
+    Animation anim;
+    
+    public Player(int x, int y, int hp, objectID id, Handler handler, Game game, SpriteSheet ss) {
+        super(x, y, id, ss);
         this.handler = handler;
+        this.game = game;
+        
+        player_image[0] = ss.grabImage(1, 1, 32, 32);
+        player_image[1] = ss.grabImage(1, 2, 32, 32);
+        player_image[2] = ss.grabImage(1, 3, 32, 32);
+        
+        anim = new Animation(3, player_image[0], player_image[1], player_image[2]);
+        
     }
+    
 
     public void tick() {
 
-        x += velX;
-        y += velY;
+        x += velX;	//updates x position by adding the pixels it moves per second
+        y += velY;  //updates y position by adding the pixels it moves per second
         
         collision();
 
@@ -29,6 +43,8 @@ public class Player extends GameObject{
 
         if(handler.isLeft()) velX = -3;
         else if(!handler.isRight()) velX = 0;
+        
+        anim.runAnimation();
 
     }
     
@@ -50,17 +66,26 @@ public class Player extends GameObject{
     				x += velX * -1;
     				y += velY * -1;
     			}
+    		}else if(tempObject.getId() == objectID.Gun) {
+    			if (getBounds().intersects(tempObject.getBounds())) {
+    				game.ammo += 10;
+    				game.hasGun = true;
+    				handler.removeObject(tempObject);
+    			}
+    		}
     		}
     	}
     	
-    }
-
+   
     public void render(Graphics g) {
-        g.setColor(Color.red);
-        g.fillRect(x, y, 10, 10);
+    	if (velX == 0 && velY == 0) {
+    		g.drawImage(player_image[0], x, y, null);
+    	}else{
+    		anim.drawAnimation(g, x, y, 0);
+    	}
     }
 
     public Rectangle getBounds() {
-        return new Rectangle(x, y, 10, 10);
+        return new Rectangle(x, y, 32, 32);
     }
 }
