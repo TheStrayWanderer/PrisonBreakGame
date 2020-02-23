@@ -1,5 +1,4 @@
 import java.awt.*;
-import java.awt.*;
 
 public abstract class GameObject {
 
@@ -8,14 +7,17 @@ public abstract class GameObject {
     protected objectID id;
     protected int hp;
     protected int damage;
+    protected SpriteSheet ss;
 
-    public GameObject(int x, int y, objectID id){
+    public GameObject(int x, int y, objectID id, SpriteSheet ss){
         this.x = x;
         this.y = y;
         this.id = id;
+        this.ss = ss;
     }
 
-    public int getDamage(){
+
+	public int getDamage(){
         return damage;
     }
 
