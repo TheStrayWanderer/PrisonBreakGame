@@ -1,13 +1,11 @@
-package prisonbreakgame;
-
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Rectangle;
 
-public class Stairs extends GameObject{
+public class Stairs extends GameObject {
 
-	public Stairs(int x, int y, objectID id) {
-		super(x, y, id);
+	public Stairs(int x, int y, objectID id, SpriteSheet ss) {
+		super(x, y, id, ss);
 
 	}
 
