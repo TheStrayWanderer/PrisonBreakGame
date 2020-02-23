@@ -1,12 +1,10 @@
-package prisonbreakgame;
-
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
 public class PlayerKeyInput extends KeyAdapter {
 
     Handler handler;
-
+    
     public PlayerKeyInput(Handler handler){
         this.handler = handler;
     }
@@ -15,7 +13,7 @@ public class PlayerKeyInput extends KeyAdapter {
     Code below is known as a Key Listener, as the name
     suggests it 'listens' to keys and obtains the player
     input allowing for player movement
-     */
+    */
     public void keyPressed(KeyEvent k){
         int key = k.getKeyCode();
 
@@ -27,7 +25,7 @@ public class PlayerKeyInput extends KeyAdapter {
                 if(key == KeyEvent.VK_S) handler.setDown(true);
                 if(key == KeyEvent.VK_A) handler.setLeft(true);
                 if(key == KeyEvent.VK_D) handler.setRight(true);
-                if(key == KeyEvent.VK_E) handler.setPickUp(true);
+                
             }
         }
 
@@ -49,7 +47,7 @@ public class PlayerKeyInput extends KeyAdapter {
                 if(key == KeyEvent.VK_S) handler.setDown(false);
                 if(key == KeyEvent.VK_A) handler.setLeft(false);
                 if(key == KeyEvent.VK_D) handler.setRight(false);
-                if(key == KeyEvent.VK_E) handler.setPickUp(false);
+
             }
         }
 
